@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f7d2e3;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #ff00af;
+        }
+
+        button {
+            font-size: 20px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #yesBtn {
+            background-color: #00ff00;
+        }
+
+        #noBtn {
+            background-color: #ff0000;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #sadKitty, #happyKitty {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Will you be my Valentine?</h1>
+
+<button id="yesBtn" onclick="displayMessage(true)">Yes</button>
+<button id="noBtn" onclick="handleNo()">No</button>
+
+<div id="message"></div>
+
+<img id="sadKitty" src="https://media.tenor.com/g1SIlwFzDngAAAAi/crying-hello-kitty-sad-hello-kitty.gif" alt="Sad Hello Kitty">
+<img id="happyKitty" src="https://sdl-stickershop.line.naver.jp/products/0/0/7/832/LINEStorePC/main.png?__=20161019" alt="Happy Hello Kitty">
+
+<script>
+    let noCount = 0;
+
+    function handleNo() {
+        noCount++;
+        if (noCount === 1) {
+            document.getElementById('message').innerText = "Let me ask you again: Will you be my Valentine?";
+        } else if (noCount < 5) {
+            // Increase the size of the "Yes" button
+            document.getElementById('yesBtn').style.fontSize = (20 + noCount * 5) + 'px';
+        } else {
+            document.getElementById('message').innerText = "Okay fine, be single then on Valentine's Day.";
+            document.getElementById('sadKitty').style.display = 'block';
+            disableButtons();
+        }
+    }
+
+    function displayMessage(isYes) {
+        if (isYes) {
+            document.getElementById('message').innerHTML = "YAYAYYAYAYYAYA I love my girl, I love you. You're gonna be my wife, inshallah. I love you so much. I can't imagine a day without you. Even though you're stinky and annoying sometimes, you're my annoying girl. I wish to make you the happiest in the world, and I really wish I can be the best boyfriend and husband that you deserve. Even though you're not funny, I still always smile when I'm with you. Whenever I go through something hard, texting you makes me feel better, so thank you!! I love you Fahima. I know we do have bad moments at times cus ur a hater but I still enjoy it cus ur cute when ur mad jk but also cus at least i know that even though we go through our tough times there isn't anyone else i would want to be with other then you and maybe kylie jenner jkk ur better then her wink wink. i love everything about u and honestly its crazy to me how its only been a month since we been together and around 70 days since we txted seperately and all those days have been amazing. I've gotten to know you better and know ur likes and dislikes and how you are. and i love that adn i wish we can get closer and always spend life together when we married inshallah. I know i yap a lot sthu and deal with it cus ikk u enjoy me being a simp and saying all this about you. what can i say i am a poet with my words. call me shakespeare, but fr though i love you my wife, my chand, my choti, my FAHIMA. ";
+            document.getElementById('happyKitty').style.display = 'block';
+            document.getElementById('yesBtn').style.display = 'none';
+            document.getElementById('noBtn').style.display = 'none';
+        }
+    }
+
+    function disableButtons() {
+        document.getElementById('yesBtn').disabled = true;
+        document.getElementById('noBtn').disabled = true;
+    }
+</script>
+
+</body>
+</html>
